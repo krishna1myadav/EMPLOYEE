@@ -1,6 +1,7 @@
 package org.employee.service.impl;
 
 import org.employee.model.dto.EmployeeDto;
+import org.employee.model.entity.Employee;
 import org.employee.repository.EmployeeRepository;
 import org.employee.service.EmployeeService;
 import org.modelmapper.ModelMapper;
@@ -25,6 +26,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(employeeDto.getId() != null){
             throw new RuntimeException("Employee already exists");
         }
+        Employee entity = modelMapper.map(employeeDto, Employee.class);
+        Employee savedEntity = employeeRepository.save(entity);
         return null;
     }
 
