@@ -3,6 +3,7 @@ package org.employee.service.impl;
 import org.employee.model.dto.EmployeeDto;
 import org.employee.repository.EmployeeRepository;
 import org.employee.service.EmployeeService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final ModelMapper modelMapper;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository){
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper){
         this.employeeRepository = employeeRepository;
+
     }
 
     @Override
