@@ -41,7 +41,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(!Objects.equals(id, employeeDto.getId())){
             throw new RuntimeException("Id mismatch");
         }
-        return null;
+
+        Employee entity = modelMapper.map(employeeDto, Employee.class);
+        Employee updatedEmployee = employeeRepository.save(entity);
+        return modelMapper.map(updatedEmployee, EmployeeDto.class);
     }
 
     @Override
