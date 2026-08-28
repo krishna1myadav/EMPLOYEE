@@ -33,4 +33,9 @@ public class EmployeeController {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>("Employee deleted successfully", HttpStatus.OK);
     }
+
+    public ResponseEntity<EmployeeDto> getSingleEmployee(@PathVariable Long id){
+        EmployeeDto response = employeeService.getSingleEmployee(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }
