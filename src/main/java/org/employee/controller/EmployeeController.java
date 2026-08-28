@@ -4,10 +4,7 @@ import org.employee.model.dto.EmployeeDto;
 import org.employee.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/employees ")
@@ -23,5 +20,11 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody EmployeeDto employeeDto){
         EmployeeDto response = employeeService.saveEmployee(employeeDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<EmployeeDto> updateEmployee(@RequestBody EmployeeDto employeeDto, @PathVariable Long id){
+        EmployeeDto response = employeeService.updateEmployee(id, employeeDto);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
