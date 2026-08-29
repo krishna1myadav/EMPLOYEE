@@ -39,4 +39,10 @@ public class EmployeeController {
         EmployeeDto response = employeeService.getSingleEmployee(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<Iterable<EmployeeDto>> getAllEmployees(){
+        Iterable<EmployeeDto> response = employeeService.getAllEmployees();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }
