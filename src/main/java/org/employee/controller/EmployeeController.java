@@ -34,6 +34,7 @@ public class EmployeeController {
         return new ResponseEntity<>("Employee deleted successfully", HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
     public ResponseEntity<EmployeeDto> getSingleEmployee(@PathVariable Long id){
         EmployeeDto response = employeeService.getSingleEmployee(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
