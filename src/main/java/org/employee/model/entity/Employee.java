@@ -71,4 +71,8 @@ public class Employee {
                 ", companyName='" + companyName + '\'' +
                 '}';
     }
+
+    public Employee(){
+
+    }
 }

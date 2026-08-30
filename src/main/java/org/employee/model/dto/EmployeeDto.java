@@ -65,4 +65,8 @@ public class EmployeeDto {
                 ", companyName='" + companyName + '\'' +
                 '}';
     }
+
+    public EmployeeDto(){
+
+    }
 }
