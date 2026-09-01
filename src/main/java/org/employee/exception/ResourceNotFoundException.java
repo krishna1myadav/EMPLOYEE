@@ -2,7 +2,7 @@ package org.employee.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class ResourceNotFoundException {
+public class ResourceNotFoundException extends RuntimeException{
 
     private String message;
     private HttpStatus status;
