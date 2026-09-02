@@ -1,5 +1,6 @@
 package org.employee.service.impl;
 
+import org.employee.exception.BadRequestException;
 import org.employee.exception.ResourceNotFoundException;
 import org.employee.model.dto.EmployeeDto;
 import org.employee.model.entity.Employee;
@@ -36,14 +37,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto) {
         if(id == null || employeeDto.getId() == null){
-            throw new RuntimeException(" Please provide employee id!!");
+            throw new BadRequestException(" Please provide employee id!!");
         }
 
         if(!Objects.equals(id, employeeDto.getId())){
-            throw new RuntimeException("Id mismatch");
+            throw new BadRequestException("Id mismatch");
         }
 
-        employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found!"));
+        employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
 
         Employee entity = modelMapper.map(employeeDto, Employee.class);
         Employee updatedEmployee = employeeRepository.save(entity);
