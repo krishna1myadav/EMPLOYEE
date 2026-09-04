@@ -45,4 +45,8 @@ public class EmployeeController {
         Iterable<EmployeeDto> response = employeeService.getAllEmployees();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    public ResponseEntity<EmployeeDto> getEmployeeByEmpCodeAndCompanyName(@RequestParam String empCode, @RequestParam String companyName){
+
+    }
 }
