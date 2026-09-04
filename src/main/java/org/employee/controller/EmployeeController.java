@@ -55,5 +55,10 @@ public class EmployeeController {
         if(empCode == null || empCode.trim().isEmpty()){
             missingParameters.add("empCode");
         }
+
+        if(companyName == null || companyName.trim().isEmpty()){
+            missingParameters.add("companyName");
+        }
+
     }
 }
