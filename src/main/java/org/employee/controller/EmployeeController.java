@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/employees")
@@ -60,5 +61,8 @@ public class EmployeeController {
             missingParameters.add("companyName");
         }
 
+        if(!missingParameters.isEmpty()){
+            String finalMessage = missingParameters.stream().collect(Collectors.joining(","));
+        }
     }
 }
