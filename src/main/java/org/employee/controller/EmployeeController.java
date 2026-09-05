@@ -1,5 +1,6 @@
 package org.employee.controller;
 
+import org.employee.exception.MissingParameterException;
 import org.employee.model.dto.EmployeeDto;
 import org.employee.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -63,6 +64,10 @@ public class EmployeeController {
 
         if(!missingParameters.isEmpty()){
             String finalMessage = missingParameters.stream().collect(Collectors.joining(","));
+            throw new MissingParameterException("Please provide "+ finalMessage);
         }
+
+        EmployeeDto response = employeeService.getEmployeeByEmpCodeAndCompanyName(empCode, companyName);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
