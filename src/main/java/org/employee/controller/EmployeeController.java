@@ -51,6 +51,7 @@ public class EmployeeController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/get-by-emp-code-and-company-name")
     public ResponseEntity<EmployeeDto> getEmployeeByEmpCodeAndCompanyName(@RequestParam(required = false) String empCode, @RequestParam(required = false) String companyName){
         List<String> missingParameters = new ArrayList<>();
 
@@ -64,7 +65,7 @@ public class EmployeeController {
 
         if(!missingParameters.isEmpty()){
             String finalMessage = missingParameters.stream().collect(Collectors.joining(","));
-            throw new MissingParameterException("Please provide "+ finalMessage);
+            throw new MissingParameterException("Please provide: "+ finalMessage);
         }
 
         EmployeeDto response = employeeService.getEmployeeByEmpCodeAndCompanyName(empCode, companyName);
